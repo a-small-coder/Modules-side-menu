@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from '@chakra-ui/react';
+import getLeftMenuData from './Data/mainMenu';
+import SideMenu from './SideMenu/SideMenu';
+import { ISideMenuProps } from './types/side_menu.types';
 
 function App() {
+
+  const menuData: ISideMenuProps = getLeftMenuData()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box h='100%' display='flex' overflow="hidden">
+        <SideMenu 
+            type={menuData.type}
+            menuBody={menuData.menuBody}
+            heading={menuData.heading}
+          />
+    </Box>
   );
 }
 
